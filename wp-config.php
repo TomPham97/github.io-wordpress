@@ -18,6 +18,8 @@
  * @package WordPress
  */
 
+
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'tompham97.github.io_db' );
@@ -79,7 +81,8 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true ); 
 
 /* Add any custom values between this line and the "stop editing" line. */
 
