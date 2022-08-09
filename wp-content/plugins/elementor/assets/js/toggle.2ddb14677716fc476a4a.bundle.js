@@ -1,6 +1,6 @@
-/*! elementor - v3.6.8 - 27-07-2022 */
+/*! elementor - v3.7.0 - 08-08-2022 */
 "use strict";
-(self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["tabs"],{
+(self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["toggle"],{
 
 /***/ "../assets/dev/js/frontend/handlers/base-tabs.js":
 /*!*******************************************************!*\
@@ -174,7 +174,7 @@ class baseTabs extends elementorModules.frontend.handlers.Base {
         }
       },
       keyup: event => {
-        switch (event.key) {
+        switch (event.code) {
           case 'ArrowLeft':
           case 'ArrowRight':
             this.handleKeyboardNavigation(event);
@@ -228,10 +228,10 @@ exports["default"] = baseTabs;
 
 /***/ }),
 
-/***/ "../assets/dev/js/frontend/handlers/tabs.js":
-/*!**************************************************!*\
-  !*** ../assets/dev/js/frontend/handlers/tabs.js ***!
-  \**************************************************/
+/***/ "../assets/dev/js/frontend/handlers/toggle.js":
+/*!****************************************************!*\
+  !*** ../assets/dev/js/frontend/handlers/toggle.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -245,19 +245,22 @@ exports["default"] = void 0;
 
 var _baseTabs = _interopRequireDefault(__webpack_require__(/*! ./base-tabs */ "../assets/dev/js/frontend/handlers/base-tabs.js"));
 
-class Tabs extends _baseTabs.default {
+class Toggle extends _baseTabs.default {
   getDefaultSettings() {
     const defaultSettings = super.getDefaultSettings();
     return { ...defaultSettings,
-      toggleSelf: false
+      showTabFn: 'slideDown',
+      hideTabFn: 'slideUp',
+      hidePrevious: false,
+      autoExpand: 'editor'
     };
   }
 
 }
 
-exports["default"] = Tabs;
+exports["default"] = Toggle;
 
 /***/ })
 
 }]);
-//# sourceMappingURL=tabs.ef0662416917dba08ba4.bundle.js.map
+//# sourceMappingURL=toggle.2ddb14677716fc476a4a.bundle.js.map

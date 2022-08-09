@@ -1,4 +1,4 @@
-/*! elementor - v3.6.8 - 27-07-2022 */
+/*! elementor - v3.7.0 - 08-08-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -380,7 +380,7 @@ isSafari = /^((?!chrome|android).)*safari/i.test(userAgent) || /constructor/i.te
 }(!window.safari || typeof safari !== 'undefined' && safari.pushNotification),
     // Internet Explorer 6-11
 isIE = /Trident|MSIE/.test(userAgent) && (
-/*@cc_on!@*/
+/* @cc_on!@*/
  false || !!document.documentMode),
     // Edge 20+
 isEdge = !isIE && !!window.StyleMedia || matchUserAgent('Edg'),
@@ -584,8 +584,8 @@ var LandingPagesHandler = /*#__PURE__*/function (_AdminMenuHandler) {
       var pageName = 'e-landing-page',
           adminMenuSelectors = {
         // The escaping is done because jQuery requires it for selectors.
-        landingPagesTablePage: 'a[href=\"edit.php?post_type=' + pageName + '\"]',
-        landingPagesAddNewPage: 'a[href=\"edit.php?post_type=elementor_library&page=' + pageName + '\"]'
+        landingPagesTablePage: 'a[href="edit.php?post_type=' + pageName + '"]',
+        landingPagesAddNewPage: 'a[href="edit.php?post_type=elementor_library&page=' + pageName + '"]'
       };
       return {
         selectors: {
@@ -1162,6 +1162,7 @@ var _filesUploadHandler = _interopRequireDefault(__webpack_require__(/*! ../edit
         $settingsForm: $('#elementor-settings-form'),
         $settingsTabsWrapper: $('#elementor-settings-tabs-wrapper'),
         $menuGetHelpLink: $('a[href="admin.php?page=go_knowledge_base_site"]'),
+        $menuGoProLink: $('a[href="admin.php?page=go_elementor_pro"]'),
         $reMigrateGlobalsButton: $('.elementor-re-migrate-globals-button')
       };
       elements.$settingsFormPages = elements.$settingsForm.find('.elementor-settings-form-page');
@@ -1407,7 +1408,7 @@ var _filesUploadHandler = _interopRequireDefault(__webpack_require__(/*! ../edit
       this.initTemplatesImport();
       this.initMaintenanceMode();
       this.goToSettingsTabFromHash();
-      this.openGetHelpInNewTab();
+      this.openLinksInNewTab();
       this.addUserAgentClasses();
       this.roleManager.init();
 
@@ -1431,8 +1432,23 @@ var _filesUploadHandler = _interopRequireDefault(__webpack_require__(/*! ../edit
         body.classList.add('e--ua-' + key);
       });
     },
-    openGetHelpInNewTab: function openGetHelpInNewTab() {
-      this.elements.$menuGetHelpLink.attr('target', '_blank');
+
+    /**
+     * Open Links in New Tab
+     *
+     * Adds a `target="_blank"` attribute to the Admin Dashboard menu items specified in the `elements` array,
+     * if the elements are found in the DOM. The items in the `elements` array should be jQuery instances.
+     *
+     * @since 3.6.0
+     */
+    openLinksInNewTab: function openLinksInNewTab() {
+      var elements = [this.elements.$menuGetHelpLink, this.elements.$menuGoProLink];
+      elements.forEach(function ($element) {
+        // Only add the attribute if the element is found.
+        if ($element.length) {
+          $element.attr('target', '_blank');
+        }
+      });
     },
     initTemplatesImport: function initTemplatesImport() {
       if (!elementorCommon.elements.$body.hasClass('post-type-elementor_library')) {

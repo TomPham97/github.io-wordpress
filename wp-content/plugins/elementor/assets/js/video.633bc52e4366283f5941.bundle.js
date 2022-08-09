@@ -1,4 +1,4 @@
-/*! elementor - v3.6.8 - 27-07-2022 */
+/*! elementor - v3.7.0 - 08-08-2022 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["video"],{
 
@@ -57,7 +57,7 @@ class Video extends elementorModules.frontend.handlers.Base {
 
   playVideo() {
     if (this.elements.$video.length) {
-      // this.youtubePlayer exists only for YouTube videos, and its play function is different.
+      // This.youtubePlayer exists only for YouTube videos, and its play function is different.
       if (this.youtubePlayer) {
         this.youtubePlayer.playVideo();
       } else {
@@ -222,4 +222,4 @@ exports["default"] = Video;
 /***/ })
 
 }]);
-//# sourceMappingURL=video.3e404214668a82a1e077.bundle.js.map
+//# sourceMappingURL=video.633bc52e4366283f5941.bundle.js.map

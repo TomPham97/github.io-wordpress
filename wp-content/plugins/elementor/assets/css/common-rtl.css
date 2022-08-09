@@ -1,4 +1,4 @@
-/*! elementor - v3.6.8 - 27-07-2022 */
+/*! elementor - v3.7.0 - 08-08-2022 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -95,6 +95,16 @@
 
 .dialog-confirm-widget .dialog-button:first-child {
   border-left: 1px solid #e6e9ec;
+}
+
+#elementor-change-exit-preference-dialog .dialog-message a {
+  cursor: pointer;
+}
+#elementor-change-exit-preference-dialog .dialog-message > div {
+  margin-bottom: 10px;
+}
+#elementor-change-exit-preference-dialog .dialog-ok {
+  color: #39b54a;
 }
 
 .dialog-prevent-scroll {

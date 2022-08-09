@@ -1,6 +1,38 @@
-/*! elementor - v3.6.8 - 27-07-2022 */
+/*! elementor - v3.7.0 - 08-08-2022 */
 "use strict";
-(self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["toggle"],{
+(self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["accordion"],{
+
+/***/ "../assets/dev/js/frontend/handlers/accordion.js":
+/*!*******************************************************!*\
+  !*** ../assets/dev/js/frontend/handlers/accordion.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _baseTabs = _interopRequireDefault(__webpack_require__(/*! ./base-tabs */ "../assets/dev/js/frontend/handlers/base-tabs.js"));
+
+class Accordion extends _baseTabs.default {
+  getDefaultSettings() {
+    const defaultSettings = super.getDefaultSettings();
+    return { ...defaultSettings,
+      showTabFn: 'slideDown',
+      hideTabFn: 'slideUp'
+    };
+  }
+
+}
+
+exports["default"] = Accordion;
+
+/***/ }),
 
 /***/ "../assets/dev/js/frontend/handlers/base-tabs.js":
 /*!*******************************************************!*\
@@ -174,7 +206,7 @@ class baseTabs extends elementorModules.frontend.handlers.Base {
         }
       },
       keyup: event => {
-        switch (event.key) {
+        switch (event.code) {
           case 'ArrowLeft':
           case 'ArrowRight':
             this.handleKeyboardNavigation(event);
@@ -226,41 +258,7 @@ class baseTabs extends elementorModules.frontend.handlers.Base {
 
 exports["default"] = baseTabs;
 
-/***/ }),
-
-/***/ "../assets/dev/js/frontend/handlers/toggle.js":
-/*!****************************************************!*\
-  !*** ../assets/dev/js/frontend/handlers/toggle.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _baseTabs = _interopRequireDefault(__webpack_require__(/*! ./base-tabs */ "../assets/dev/js/frontend/handlers/base-tabs.js"));
-
-class Toggle extends _baseTabs.default {
-  getDefaultSettings() {
-    const defaultSettings = super.getDefaultSettings();
-    return { ...defaultSettings,
-      showTabFn: 'slideDown',
-      hideTabFn: 'slideUp',
-      hidePrevious: false,
-      autoExpand: 'editor'
-    };
-  }
-
-}
-
-exports["default"] = Toggle;
-
 /***/ })
 
 }]);
-//# sourceMappingURL=toggle.3390394a60b51b971197.bundle.js.map
+//# sourceMappingURL=accordion.342cf6dd66b8f56ed3e2.bundle.js.map

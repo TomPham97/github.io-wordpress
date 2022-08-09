@@ -1,4 +1,4 @@
-/*! elementor - v3.6.8 - 27-07-2022 */
+/*! elementor - v3.7.0 - 08-08-2022 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["onboarding"],{
 
@@ -1411,7 +1411,7 @@ function Account() {
   };
 
   if (state.isLibraryConnected) {
-    actionButton.text = __('Let\'s do it', 'elementor');
+    actionButton.text = __('Let’s do it', 'elementor');
 
     actionButton.onClick = function () {
       elementorCommon.events.dispatchEvent({
@@ -2584,7 +2584,7 @@ function UploadAndInstallPro() {
     filetypes: ['zip'],
     buttonColor: "cta",
     buttonVariant: "contained",
-    heading: __('Import you Elementor Pro plugin file', 'elementor'),
+    heading: __('Import your Elementor Pro plugin file', 'elementor'),
     text: __('Drag & Drop your .zip file here', 'elementor'),
     secondaryText: __('or', 'elementor'),
     buttonText: __('Browse', 'elementor')
@@ -2663,4 +2663,4 @@ Connect.propTypes = {
 /***/ })
 
 }]);
-//# sourceMappingURL=onboarding.cde2e50eb0dd59cdc9c3.bundle.js.map
+//# sourceMappingURL=onboarding.2587478fd17618c984e9.bundle.js.map
