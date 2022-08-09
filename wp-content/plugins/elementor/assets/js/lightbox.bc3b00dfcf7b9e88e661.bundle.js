@@ -1,4 +1,4 @@
-/*! elementor - v3.7.0 - 08-08-2022 */
+/*! elementor - v3.6.8 - 27-07-2022 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["lightbox"],{
 
 /***/ "../assets/dev/js/frontend/utils/icons/e-icons.js":
@@ -462,24 +462,22 @@ module.exports = elementorModules.ViewModule.extend({
         break;
 
       case 'image':
-        {
-          const slides = [{
-            image: options.url,
-            index: 0,
-            title: options.title,
-            description: options.description,
-            hash: options.hash
-          }];
-          options.slideshow = {
-            slides,
-            swiper: {
-              loop: false,
-              pagination: false
-            }
-          };
-          self.setSlideshowContent(options.slideshow);
-          break;
-        }
+        const slides = [{
+          image: options.url,
+          index: 0,
+          title: options.title,
+          description: options.description,
+          hash: options.hash
+        }];
+        options.slideshow = {
+          slides,
+          swiper: {
+            loop: false,
+            pagination: false
+          }
+        };
+        self.setSlideshowContent(options.slideshow);
+        break;
 
       case 'slideshow':
         self.setSlideshowContent(options.slideshow);
@@ -526,7 +524,7 @@ module.exports = elementorModules.ViewModule.extend({
 
   setHTMLContent(html) {
     if (window.elementorCommon) {
-      elementorDevTools.deprecation.deprecated('elementorFrontend.utils.lightbox.setHTMLContent', '3.1.4');
+      elementorCommon.helpers.hardDeprecated('elementorFrontend.utils.lightbox.setHTMLContent', '3.1.4');
     }
 
     this.getModal().setMessage(html);
@@ -1479,4 +1477,4 @@ module.exports = _defineProperty, module.exports.__esModule = true, module.expor
 /***/ })
 
 }]);
-//# sourceMappingURL=lightbox.9b08bd862235e434184e.bundle.js.map
+//# sourceMappingURL=lightbox.bc3b00dfcf7b9e88e661.bundle.js.map

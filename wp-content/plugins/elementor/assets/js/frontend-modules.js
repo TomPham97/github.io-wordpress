@@ -1,4 +1,4 @@
-/*! elementor - v3.7.0 - 08-08-2022 */
+/*! elementor - v3.6.8 - 27-07-2022 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["frontend-modules"],{
 
 /***/ "../assets/dev/js/editor/utils/is-instanceof.js":
@@ -221,8 +221,7 @@ module.exports = elementorModules.ViewModule.extend({
   findElement(selector) {
     var $mainElement = this.$element;
     return $mainElement.find(selector).filter(function () {
-      // Start `closest` from parent since self can be `.elementor-element`.
-      return jQuery(this).parent().closest('.elementor-element').is($mainElement);
+      return jQuery(this).closest('.elementor-element').is($mainElement);
     });
   },
 
@@ -289,8 +288,7 @@ module.exports = elementorModules.ViewModule.extend({
             return;
           }
 
-          const propName = Object.keys(changedModel.changed)[0];
-          self.onEditSettingsChange(propName, changedModel.changed[propName]);
+          self.onEditSettingsChange(Object.keys(changedModel.changed)[0]);
         }
 
       });
@@ -498,7 +496,7 @@ module.exports = elementorModules.ViewModule.extend({
         $container;
 
     try {
-      $container = jQuery(containerSelector); // eslint-disable-next-line no-empty
+      $container = jQuery(containerSelector);
     } catch (e) {}
 
     if (!$container || !$container.length) {
@@ -604,7 +602,7 @@ class ArgsObject extends _instanceType.default {
   requireArgument(property) {
     let args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.args;
 
-    if (!Object.prototype.hasOwnProperty.call(args, property)) {
+    if (!args.hasOwnProperty(property)) {
       throw Error(`${property} is required.`);
     }
   }
@@ -704,14 +702,7 @@ __webpack_require__(/*! core-js/modules/es.array.includes.js */ "../node_modules
 class ForceMethodImplementation extends Error {
   constructor() {
     let info = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    let args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    super(`${info.isStatic ? 'static ' : ''}${info.fullName}() should be implemented, please provide '${info.functionName || info.fullName}' functionality.`, args); // Allow to pass custom properties to the error.
-
-    if (Object.keys(args).length) {
-      // eslint-disable-next-line no-console
-      console.error(args);
-    }
-
+    super(`${info.isStatic ? 'static ' : ''}${info.fullName}() should be implemented, please provide '${info.functionName || info.fullName}' functionality.`);
     Error.captureStackTrace(this, ForceMethodImplementation);
   }
 
@@ -719,7 +710,7 @@ class ForceMethodImplementation extends Error {
 
 exports.ForceMethodImplementation = ForceMethodImplementation;
 
-var _default = args => {
+var _default = () => {
   const stack = Error().stack,
         caller = stack.split('\n')[2].trim(),
         callerName = caller.startsWith('at new') ? 'constructor' : caller.split(' ')[1],
@@ -735,7 +726,7 @@ var _default = args => {
     info.isStatic = true;
   }
 
-  throw new ForceMethodImplementation(info, args);
+  throw new ForceMethodImplementation(info);
 };
 
 exports["default"] = _default;
@@ -797,10 +788,6 @@ class InstanceType {
     return result;
   }
 
-  static getInstanceType() {
-    elementorModules.ForceMethodImplementation();
-  }
-
   constructor() {
     // Since anonymous classes sometimes do not get validated by babel, do it manually.
     let target = new.target;
@@ -812,6 +799,10 @@ class InstanceType {
     }
 
     prototypes.reverse().forEach(proto => this instanceof proto);
+  }
+
+  static getInstanceType() {
+    elementorModules.ForceMethodImplementation();
   }
 
 }
@@ -1033,21 +1024,16 @@ module.exports = Module;
 /*!*********************************************************!*\
   !*** ../assets/dev/js/modules/imports/utils/masonry.js ***!
   \*********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
 var _viewModule = _interopRequireDefault(__webpack_require__(/*! ../view-module */ "../assets/dev/js/modules/imports/view-module.js"));
 
-var _default = _viewModule.default.extend({
+module.exports = _viewModule.default.extend({
   getDefaultSettings() {
     return {
       container: null,
@@ -1090,8 +1076,6 @@ var _default = _viewModule.default.extend({
   }
 
 });
-
-exports["default"] = _default;
 
 /***/ }),
 
@@ -1213,21 +1197,16 @@ exports["default"] = Scroll;
 /*!*******************************************************!*\
   !*** ../assets/dev/js/modules/imports/view-module.js ***!
   \*******************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
 var _module = _interopRequireDefault(__webpack_require__(/*! ./module */ "../assets/dev/js/modules/imports/module.js"));
 
-var _default = _module.default.extend({
+module.exports = _module.default.extend({
   elements: null,
 
   getDefaultElements() {
@@ -1246,8 +1225,6 @@ var _default = _module.default.extend({
   }
 
 });
-
-exports["default"] = _default;
 
 /***/ }),
 

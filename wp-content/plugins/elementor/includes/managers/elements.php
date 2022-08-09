@@ -277,10 +277,6 @@ class Elements_Manager {
 	 */
 	private function init_categories() {
 		$this->categories = [
-			'layout' => [
-				'title' => esc_html__( 'Layout', 'elementor' ),
-				'hideIfEmpty' => true,
-			],
 			'basic' => [
 				'title' => esc_html__( 'Basic', 'elementor' ),
 				'icon' => 'eicon-font',

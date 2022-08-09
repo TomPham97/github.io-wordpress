@@ -86,9 +86,7 @@ class Experiments_Reporter extends Base {
 				$output .= "\t";
 			}
 
-			$title = isset( $experiment['title'] ) ? $experiment['title'] : $experiment['name'];
-
-			$output .= $title . ': ' . $state . PHP_EOL;
+			$output .= $experiment['title'] . ': ' . $state . PHP_EOL;
 
 			$is_first_item = false;
 		}

@@ -1,4 +1,4 @@
-/*! elementor - v3.7.0 - 08-08-2022 */
+/*! elementor - v3.6.8 - 27-07-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -1869,7 +1869,7 @@ var Button = /*#__PURE__*/function (_BaseButton) {
 
 exports["default"] = Button;
 (0, _defineProperty2.default)(Button, "defaultProps", Object.assign({}
-/* Clone */
+/* clone */
 , _button.default.defaultProps, {
   hideText: true,
   includeHeaderBtnClass: true
@@ -1999,20 +1999,14 @@ function Header(props) {
   }), /*#__PURE__*/_react.default.createElement("h1", {
     className: "eps-app__title"
   }, props.title)), /*#__PURE__*/_react.default.createElement(_headerButtons.default, {
-    buttons: props.buttons,
-    onClose: function onClose() {
-      var _props$onClose;
-
-      return (_props$onClose = props.onClose) === null || _props$onClose === void 0 ? void 0 : _props$onClose.call(props);
-    }
+    buttons: props.buttons
   }));
 }
 
 Header.propTypes = {
   title: PropTypes.string,
   titleRedirectRoute: PropTypes.string,
-  buttons: PropTypes.arrayOf(PropTypes.object),
-  onClose: PropTypes.func
+  buttons: PropTypes.arrayOf(PropTypes.object)
 };
 Header.defaultProps = {
   buttons: []
@@ -2070,12 +2064,7 @@ function Page(props) {
   }, /*#__PURE__*/_react.default.createElement(_header.default, {
     title: props.title,
     buttons: props.headerButtons,
-    titleRedirectRoute: props.titleRedirectRoute,
-    onClose: function onClose() {
-      var _props$onClose;
-
-      return (_props$onClose = props.onClose) === null || _props$onClose === void 0 ? void 0 : _props$onClose.call(props);
-    }
+    titleRedirectRoute: props.titleRedirectRoute
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "eps-app__main"
   }, AppSidebar(), /*#__PURE__*/_react.default.createElement(_content.default, null, props.content)), AppFooter()));
@@ -2088,8 +2077,7 @@ Page.propTypes = {
   headerButtons: PropTypes.arrayOf(PropTypes.object),
   sidebar: PropTypes.object,
   content: PropTypes.object.isRequired,
-  footer: PropTypes.object,
-  onClose: PropTypes.func
+  footer: PropTypes.object
 };
 Page.defaultProps = {
   className: ''
@@ -2412,10 +2400,6 @@ function UploadFile(props) {
     hideText: props.isLoading,
     icon: props.isLoading ? 'eicon-loading eicon-animation-spin' : '',
     onClick: function onClick() {
-      if (props.onFileChoose) {
-        props.onFileChoose();
-      }
-
       if (!props.isLoading) {
         if (props.onButtonClick) {
           props.onButtonClick();
@@ -2459,8 +2443,7 @@ UploadFile.propTypes = {
   onError: PropTypes.func,
   variant: PropTypes.string,
   color: PropTypes.string,
-  onButtonClick: PropTypes.func,
-  onFileChoose: PropTypes.func
+  onButtonClick: PropTypes.func
 };
 UploadFile.defaultProps = {
   className: '',
@@ -2555,8 +2538,7 @@ function DropZone(props) {
     text: props.buttonText,
     filetypes: props.filetypes,
     variant: props.buttonVariant,
-    color: props.buttonColor,
-    onFileChoose: props.onFileChoose
+    color: props.buttonColor
   }), props.description && /*#__PURE__*/_react.default.createElement(_text.default, {
     variant: "xl",
     className: "e-app-drop-zone__description"
@@ -2582,8 +2564,7 @@ DropZone.propTypes = {
   filetypes: PropTypes.array.isRequired,
   onError: PropTypes.func,
   description: PropTypes.string,
-  onButtonClick: PropTypes.func,
-  onFileChoose: PropTypes.func
+  onButtonClick: PropTypes.func
 };
 DropZone.defaultProps = {
   className: '',
@@ -2746,9 +2727,6 @@ function UnfilteredFilesDialog(props) {
       onReady = props.onReady,
       onCancel = props.onCancel,
       onDismiss = props.onDismiss,
-      onLoad = props.onLoad,
-      onEnable = props.onEnable,
-      onClose = props.onClose,
       _useAjax = (0, _useAjax2.default)(),
       ajaxState = _useAjax.ajaxState,
       setAjax = _useAjax.setAjax,
@@ -2775,10 +2753,6 @@ function UnfilteredFilesDialog(props) {
           })
         }
       });
-
-      if (onEnable) {
-        onEnable();
-      }
     }
   }, [enableUnfilteredFiles]); // Enabling unfiltered files ajax status.
 
@@ -2794,23 +2768,18 @@ function UnfilteredFilesDialog(props) {
         break;
     }
   }, [ajaxState]);
-  (0, _react.useEffect)(function () {
-    if (show && onLoad) {
-      onLoad();
-    }
-  }, [show]);
 
   if (!show) {
     return null;
   }
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isEnableError ? /*#__PURE__*/_react.default.createElement(_dialog.default, {
-    title: __('Something went wrong.', 'elementor'),
+    title: __('Sorry, something went wrong.', 'elementor'),
     text: props.errorModalText,
     approveButtonColor: "link",
     approveButtonText: __('Continue', 'elementor'),
     approveButtonOnClick: onReady,
-    dismissButtonText: __('Go Back', 'elementor'),
+    dismissButtonText: __('Go back', 'elementor'),
     dismissButtonOnClick: onCancel,
     onClose: onCancel
   }) : /*#__PURE__*/_react.default.createElement(_dialog.default, {
@@ -2823,7 +2792,7 @@ function UnfilteredFilesDialog(props) {
     },
     dismissButtonText: __('Skip', 'elementor'),
     dismissButtonOnClick: onDismiss || onReady,
-    onClose: onClose || onDismiss || onReady
+    onClose: onDismiss || onReady
   }));
 }
 
@@ -2834,15 +2803,10 @@ UnfilteredFilesDialog.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onDismiss: PropTypes.func,
   confirmModalText: PropTypes.string.isRequired,
-  errorModalText: PropTypes.string.isRequired,
-  onLoad: PropTypes.func,
-  onEnable: PropTypes.func,
-  onClose: PropTypes.func
+  errorModalText: PropTypes.string.isRequired
 };
 UnfilteredFilesDialog.defaultProps = {
-  show: false,
-  onReady: function onReady() {},
-  onCancel: function onCancel() {}
+  show: false
 };
 
 /***/ }),
@@ -3127,7 +3091,7 @@ function Box(props) {
       classes = [baseClassName, props.className],
       style = {};
 
-  if (Object.prototype.hasOwnProperty.call(props, 'padding')) {
+  if (props.hasOwnProperty('padding')) {
     style['--eps-box-padding'] = (0, _utils.pxToRem)(props.padding);
     classes.push(baseClassName + '--padding');
   }
@@ -3483,12 +3447,7 @@ function Select(props) {
     className: props.className,
     value: props.value,
     onChange: props.onChange,
-    ref: props.elRef,
-    onClick: function onClick() {
-      var _props$onClick;
-
-      return (_props$onClick = props.onClick) === null || _props$onClick === void 0 ? void 0 : _props$onClick.call(props);
-    }
+    ref: props.elRef
   }, props.options.map(function (option) {
     return option.children ? /*#__PURE__*/_react.default.createElement("optgroup", {
       label: option.label,
@@ -3511,8 +3470,7 @@ Select.propTypes = {
   options: PropTypes.array,
   elRef: PropTypes.object,
   multiple: PropTypes.bool,
-  value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-  onClick: PropTypes.func
+  value: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
 };
 Select.defaultProps = {
   className: '',
@@ -3598,7 +3556,7 @@ function CardBody(props) {
       classes = [classNameBase, props.className],
       style = {};
 
-  if (Object.prototype.hasOwnProperty.call(props, 'padding')) {
+  if (props.hasOwnProperty('padding')) {
     style['--eps-card-body-padding'] = (0, _utils.pxToRem)(props.padding);
     classes.push(classNameBase + '--padding');
   }
@@ -3690,7 +3648,7 @@ function CardFooter(props) {
       classes = [classNameBase, props.className],
       style = {};
 
-  if (Object.prototype.hasOwnProperty.call(props, 'padding')) {
+  if (props.hasOwnProperty('padding')) {
     style['--eps-card-footer-padding'] = (0, _utils.pxToRem)(props.padding);
     classes.push(classNameBase + '--padding');
   }
@@ -3742,7 +3700,7 @@ function CardHeader(props) {
       classes = [classNameBase, props.className],
       style = {};
 
-  if (Object.prototype.hasOwnProperty.call(props, 'padding')) {
+  if (props.hasOwnProperty('padding')) {
     style['--eps-card-header-padding'] = (0, _utils.pxToRem)(props.padding);
     classes.push(classNameBase + '--padding');
   }
@@ -4727,9 +4685,7 @@ ModalProvider.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.string,
   show: PropTypes.bool,
-  setShow: PropTypes.func,
-  onOpen: PropTypes.func,
-  onClose: PropTypes.func
+  setShow: PropTypes.func
 };
 ModalProvider.defaultProps = {
   show: false
@@ -4743,25 +4699,18 @@ var Modal = function Modal(props) {
       closeModal = function closeModal(e) {
     var node = modalRef.current,
         closeNode = closeRef.current,
-        isInCloseNode = closeNode && closeNode.contains(e.target); // Ignore if click is inside the modal
+        isInCloseNode = closeNode && closeNode.contains(e.target); // ignore if click is inside the modal
 
     if (node && node.contains(e.target) && !isInCloseNode) {
       return;
     }
 
     props.hideModal();
-
-    if (props.onClose) {
-      props.onClose(e);
-    }
   };
 
   (0, _react.useEffect)(function () {
     if (props.show) {
-      var _props$onOpen;
-
       document.addEventListener('mousedown', closeModal, false);
-      (_props$onOpen = props.onOpen) === null || _props$onOpen === void 0 ? void 0 : _props$onOpen.call(props);
     }
 
     return function () {
@@ -4820,9 +4769,7 @@ Modal.propTypes = {
   setShow: PropTypes.func,
   hideModal: PropTypes.func,
   showModal: PropTypes.func,
-  closeModal: PropTypes.func,
-  onOpen: PropTypes.func,
-  onClose: PropTypes.func
+  closeModal: PropTypes.func
 };
 Modal.defaultProps = {
   className: ''
@@ -5157,8 +5104,7 @@ function InlineLink(props) {
       href: props.url,
       target: props.target,
       rel: props.rel,
-      className: className,
-      onClick: props.onClick
+      className: className
     }, props.children);
   },
       getActionLink = function getActionLink() {
@@ -5184,8 +5130,7 @@ InlineLink.propTypes = {
   text: PropTypes.string,
   color: PropTypes.oneOf(['primary', 'secondary', 'cta', 'link', 'disabled']),
   underline: PropTypes.oneOf(['none', 'hover', 'always']),
-  italic: PropTypes.bool,
-  onClick: PropTypes.func
+  italic: PropTypes.bool
 };
 InlineLink.defaultProps = {
   className: '',
@@ -5223,7 +5168,7 @@ function ListItem(props) {
       classes = [baseClassName, props.className];
   var style;
 
-  if (Object.prototype.hasOwnProperty.call(props, 'padding')) {
+  if (props.hasOwnProperty('padding')) {
     style = {
       '--eps-list-item-padding': (0, _utils.pxToRem)(props.padding)
     };
@@ -5277,7 +5222,7 @@ function List(props) {
       classes = [baseClassName, props.className];
   var style;
 
-  if (Object.prototype.hasOwnProperty.call(props, 'padding')) {
+  if (props.hasOwnProperty('padding')) {
     style = {
       '--eps-list-padding': (0, _utils.pxToRem)(props.padding)
     };
@@ -6393,7 +6338,6 @@ function Promotion() {
     color: "cta",
     variant: "contained",
     url: promotionUrl,
-    target: "_blank",
     text: __('Upgrade Now', 'elementor')
   }))), /*#__PURE__*/_react.default.createElement("hr", {
     className: "eps-separator"

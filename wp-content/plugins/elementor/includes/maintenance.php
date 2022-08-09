@@ -36,9 +36,7 @@ class Maintenance {
 
 		if ( is_multisite() && $network_wide ) {
 			static::create_default_kit(
-				get_sites( [
-					'fields' => 'ids',
-				] )
+				get_sites( [ 'fields' => 'ids' ] )
 			);
 
 			return;

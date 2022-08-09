@@ -1,4 +1,4 @@
-/*! elementor - v3.7.0 - 08-08-2022 */
+/*! elementor - v3.6.8 - 27-07-2022 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["kit-library"],{
 
 /***/ "../core/app/modules/kit-library/assets/js/components/badge.scss":
@@ -528,8 +528,7 @@ function ApplyKitDialog(props) {
 
     navigate(url);
   }, [props.downloadLink, props.nonce]);
-  return /*#__PURE__*/_react.default.createElement(_appUi.Dialog // Translators: %s is the kit name.
-  , {
+  return /*#__PURE__*/_react.default.createElement(_appUi.Dialog, {
     title: __('Apply %s?', 'elementor').replace('%s', props.title),
     text: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('You can use everything in this kit, or Customize to only include some items.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), __('By applying the entire kit, you\'ll override any styles, settings or content already on your site.', 'elementor')),
     approveButtonText: __('Apply All', 'elementor'),
@@ -625,17 +624,14 @@ function Collapse(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "eps-collapse ".concat(props.className),
     "data-open": props.isOpen || undefined
-    /* Set `undefined` when 'isOpen' equals `false` to avoid showing the attr "data-open" */
+    /* set `undefined` when 'isOpen' equals `false` to avoid showing the attr "data-open" */
 
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "eps-collapse__title",
     onClick: function onClick() {
-      var _props$onClick;
-
-      props.onChange(function (value) {
+      return props.onChange(function (value) {
         return !value;
       });
-      (_props$onClick = props.onClick) === null || _props$onClick === void 0 ? void 0 : _props$onClick.call(props, props.isOpen, props.title);
     }
   }, /*#__PURE__*/_react.default.createElement("span", null, props.title), /*#__PURE__*/_react.default.createElement("i", {
     className: "eicon-chevron-right eps-collapse__icon"
@@ -649,7 +645,6 @@ Collapse.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
   title: PropTypes.node,
-  onClick: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
 };
 Collapse.defaultProps = {
@@ -707,7 +702,7 @@ function ConnectDialog(props) {
   }, []);
   return /*#__PURE__*/_react.default.createElement(_appUi.Dialog, {
     title: __('Connect to Template Library', 'elementor'),
-    text: __('Access this template and our entire library by creating a free personal account', 'elementor'),
+    text: __('Access this template and our entire library by creating an account', 'elementor'),
     approveButtonText: __('Get Started', 'elementor'),
     approveButtonUrl: settings.library_connect_url,
     approveButtonOnClick: function approveButtonOnClick() {
@@ -742,7 +737,6 @@ ConnectDialog.propTypes = {
 
 "use strict";
 /* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
-/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
@@ -756,21 +750,9 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./envato-promotion.scss */ "../core/app/modules/kit-library/assets/js/components/envato-promotion.scss");
 
-function EnvatoPromotion(props) {
-  var eventTracking = function eventTracking(command) {
-    var eventType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: 'home page',
-      element_position: 'library_bottom_promotion',
-      category: props.category && ('/favorites' === props.category ? 'favorites' : 'all kits'),
-      event_type: eventType
-    });
-  };
-
+function EnvatoPromotion() {
   return /*#__PURE__*/_react.default.createElement(_appUi.Text, {
     className: "e-kit-library-bottom-promotion",
     variant: "xl"
@@ -780,16 +762,9 @@ function EnvatoPromotion(props) {
     url: "https://go.elementor.com/app-envato-kits/",
     target: "_blank",
     rel: "noreferrer",
-    text: __('Check out Elementor Template Kits on ThemeForest', 'elementor'),
-    onClick: function onClick() {
-      return eventTracking('kit-library/check-kits-on-theme-forest');
-    }
+    text: __('Check out Elementor Template Kits on ThemeForest', 'elementor')
   }));
 }
-
-EnvatoPromotion.propTypes = {
-  category: PropTypes.string
-};
 
 /***/ }),
 
@@ -814,21 +789,10 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./error-screen.scss */ "../core/app/modules/kit-library/assets/js/components/error-screen.scss");
 
 /* eslint-disable jsx-a11y/alt-text */
 function ErrorScreen(props) {
-  var onClick = function onClick() {
-    (0, _appsEventTracking.appsEventTrackingDispatch)('kit-library/go-back-to-view-kits', {
-      page_source: 'home page',
-      element_position: 'empty state',
-      category: props.button.category && ('/favorites' === props.button.category ? 'favorites' : 'all')
-    });
-    props.button.action();
-  };
-
   return /*#__PURE__*/_react.default.createElement(_appUi.Grid, {
     container: true,
     alignItems: "center",
@@ -847,7 +811,7 @@ function ErrorScreen(props) {
   }, props.description, " ", ' ', /*#__PURE__*/_react.default.createElement(_appUi.Button, {
     text: props.button.text,
     color: "link",
-    onClick: onClick,
+    onClick: props.button.action,
     url: props.button.url,
     target: props.button.target
   })));
@@ -860,8 +824,7 @@ ErrorScreen.propTypes = {
     text: PropTypes.string,
     action: PropTypes.func,
     url: PropTypes.string,
-    target: PropTypes.string,
-    category: PropTypes.string
+    target: PropTypes.string
   })
 };
 
@@ -891,8 +854,6 @@ var _useKitFavoritesMutations = __webpack_require__(/*! ../hooks/use-kit-favorit
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./favorites-actions.scss */ "../core/app/modules/kit-library/assets/js/components/favorites-actions.scss");
 
 function FavoritesActions(props) {
@@ -902,50 +863,28 @@ function FavoritesActions(props) {
       isLoading = _useKitFavoritesMutat.isLoading;
 
   var loadingClasses = isLoading ? 'e-kit-library__kit-favorite-actions--loading' : '';
-
-  var eventTracking = function eventTracking(kitName, source, action) {
-    var gridLocation = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-    var searchTerm = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
-    (0, _appsEventTracking.appsEventTrackingDispatch)('kit-library/favorite-icon', {
-      grid_location: gridLocation,
-      search_term: searchTerm,
-      kit_name: kitName,
-      page_source: source && ('/' === source ? 'home page' : 'overview'),
-      element_location: source && 'overview' === source ? 'app_sidebar' : null,
-      action: action
-    });
-  };
-
   return props.isFavorite ? /*#__PURE__*/_react.default.createElement(_appUi.Button, {
-    text: __('Remove from Favorites', 'elementor'),
+    text: __('Remove From Favorites', 'elementor'),
     hideText: true,
     icon: "eicon-heart",
     className: "e-kit-library__kit-favorite-actions e-kit-library__kit-favorite-actions--active ".concat(loadingClasses),
     onClick: function onClick() {
-      // eslint-disable-next-line no-unused-expressions
-      !isLoading && removeFromFavorites.mutate(props.id);
-      eventTracking(props === null || props === void 0 ? void 0 : props.name, props === null || props === void 0 ? void 0 : props.source, 'uncheck');
+      return !isLoading && removeFromFavorites.mutate(props.id);
     }
   }) : /*#__PURE__*/_react.default.createElement(_appUi.Button, {
-    text: __('Add to Favorites', 'elementor'),
+    text: __('Add To Favorites', 'elementor'),
     hideText: true,
     icon: "eicon-heart-o",
     className: "e-kit-library__kit-favorite-actions ".concat(loadingClasses),
     onClick: function onClick() {
-      // eslint-disable-next-line no-unused-expressions
-      !isLoading && addToFavorites.mutate(props.id);
-      eventTracking(props === null || props === void 0 ? void 0 : props.name, props === null || props === void 0 ? void 0 : props.source, 'check', props === null || props === void 0 ? void 0 : props.index, props === null || props === void 0 ? void 0 : props.queryParams);
+      return !isLoading && addToFavorites.mutate(props.id);
     }
   });
 }
 
 FavoritesActions.propTypes = {
   isFavorite: PropTypes.bool,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  source: PropTypes.string,
-  index: PropTypes.number,
-  queryParams: PropTypes.string
+  id: PropTypes.string
 };
 
 /***/ }),
@@ -978,29 +917,16 @@ var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./filter-indication-text.scss */ "../core/app/modules/kit-library/assets/js/components/filter-indication-text.scss");
 
 function FilterIndicationText(props) {
   var selectedTaxonomies = (0, _useSelectedTaxonomies.default)(props.queryParams.taxonomies);
-
-  var eventTracking = function eventTracking(taxonomy) {
-    var eventType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)('kit-library/clear-filter', {
-      tag: taxonomy,
-      page_source: 'home page',
-      event_type: eventType
-    });
-  };
-
   return /*#__PURE__*/_react.default.createElement(_appUi.Grid, {
     container: true,
     className: "e-kit-library__filter-indication"
   }, /*#__PURE__*/_react.default.createElement(_appUi.Text, {
     className: "e-kit-library__filter-indication-text"
-  }, // Translators: %s is the number of kits in the results
-  (0, _i18n.sprintf)((0, _i18n._n)('Showing %s result for', 'Showing %s results for', props.resultCount, 'elementor'), !props.resultCount ? __('no', 'elementor') : props.resultCount), ' ', props.queryParams.search && "\"".concat(props.queryParams.search, "\""), ' ', selectedTaxonomies.length > 0 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, selectedTaxonomies.map(function (taxonomy) {
+  }, (0, _i18n.sprintf)((0, _i18n._n)('Showing %s result for', 'Showing %s results for', props.resultCount, 'elementor'), !props.resultCount ? __('no', 'elementor') : props.resultCount), ' ', props.queryParams.search && "\"".concat(props.queryParams.search, "\""), ' ', selectedTaxonomies.length > 0 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, selectedTaxonomies.map(function (taxonomy) {
     return /*#__PURE__*/_react.default.createElement(_badge.default, {
       key: taxonomy,
       className: "e-kit-library__filter-indication-badge"
@@ -1010,18 +936,14 @@ function FilterIndicationText(props) {
       icon: "eicon-editor-close",
       className: "e-kit-library__filter-indication-badge-remove",
       onClick: function onClick() {
-        eventTracking(taxonomy);
-        props.onRemoveTag(taxonomy);
+        return props.onRemoveTag(taxonomy);
       }
     }));
   }))), /*#__PURE__*/_react.default.createElement(_appUi.Button, {
     className: "e-kit-library__filter-indication-button",
     text: __('Clear all', 'elementor'),
     variant: "underlined",
-    onClick: function onClick() {
-      eventTracking('all');
-      props.onClear();
-    }
+    onClick: props.onClear
   }));
 }
 
@@ -1060,8 +982,6 @@ exports["default"] = ItemHeader;
 
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
 
-var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "../node_modules/@babel/runtime/helpers/extends.js"));
-
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "../node_modules/@babel/runtime/helpers/toConsumableArray.js"));
 
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
@@ -1084,8 +1004,6 @@ var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
 var _settingsContext = __webpack_require__(/*! ../context/settings-context */ "../core/app/modules/kit-library/assets/js/context/settings-context.js");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./item-header.scss */ "../core/app/modules/kit-library/assets/js/components/item-header.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -1099,15 +1017,13 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
  * @param {Object}   root0
  * @param {Function} root0.apply
  * @param {Function} root0.onConnect
- * @param {Function} root0.onClick
  * @param {boolean}  root0.isApplyLoading
  * @return {Object} result
  */
 function useKitCallToActionButton(model, _ref) {
   var apply = _ref.apply,
       isApplyLoading = _ref.isApplyLoading,
-      onConnect = _ref.onConnect,
-      _onClick = _ref.onClick;
+      onConnect = _ref.onConnect;
 
   var _useKitCallToAction = (0, _useKitCallToAction3.default)(model.accessLevel),
       _useKitCallToAction2 = (0, _slicedToArray2.default)(_useKitCallToAction, 2),
@@ -1124,10 +1040,7 @@ function useKitCallToActionButton(model, _ref) {
         variant: 'contained',
         color: 'primary',
         size: 'sm',
-        onClick: function onClick(e) {
-          onConnect(e);
-          _onClick === null || _onClick === void 0 ? void 0 : _onClick(e);
-        },
+        onClick: onConnect,
         includeHeaderBtnClass: false
       };
     }
@@ -1135,7 +1048,6 @@ function useKitCallToActionButton(model, _ref) {
     if (type === _useKitCallToAction3.TYPE_PROMOTION && subscriptionPlan) {
       return {
         id: 'promotion',
-        // Translators: %s is the subscription plan name.
         text: __('Go %s', 'elementor').replace('%s', subscriptionPlan.label),
         hideText: false,
         variant: 'contained',
@@ -1156,13 +1068,7 @@ function useKitCallToActionButton(model, _ref) {
       variant: 'contained',
       color: isApplyLoading ? 'disabled' : 'primary',
       size: 'sm',
-      onClick: function onClick(e) {
-        if (!isApplyLoading) {
-          apply(e);
-        }
-
-        _onClick === null || _onClick === void 0 ? void 0 : _onClick(e);
-      },
+      onClick: isApplyLoading ? null : apply,
       includeHeaderBtnClass: false
     };
   }, [type, subscriptionPlan, isApplyLoading, apply]);
@@ -1186,11 +1092,6 @@ function ItemHeader(props) {
       _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
       error = _useState6[0],
       setError = _useState6[1];
-
-  var kitData = {
-    kitName: props.model.title,
-    pageId: props.pageId
-  };
 
   var _useDownloadLinkMutat = (0, _useDownloadLinkMutation.default)(props.model, {
     onSuccess: function onSuccess(_ref2) {
@@ -1223,15 +1124,7 @@ function ItemHeader(props) {
       return setIsConnectDialogOpen(true);
     },
     apply: apply,
-    isApplyLoading: isApplyLoading,
-    onClick: function onClick() {
-      return (0, _appsEventTracking.appsEventTrackingDispatch)('kit-library/apply-kit', {
-        kit_name: props.model.title,
-        element_position: 'app_header',
-        page_source: props.pageId,
-        event_type: 'click'
-      });
-    }
+    isApplyLoading: isApplyLoading
   });
   var buttons = (0, _react.useMemo)(function () {
     return [applyButton].concat((0, _toConsumableArray2.default)(props.buttons));
@@ -1284,11 +1177,11 @@ function ItemHeader(props) {
         message: message
       });
     }
-  }), /*#__PURE__*/_react.default.createElement(_header.default, (0, _extends2.default)({
-    startColumn: /*#__PURE__*/_react.default.createElement(_headerBackButton.default, kitData),
+  }), /*#__PURE__*/_react.default.createElement(_header.default, {
+    startColumn: /*#__PURE__*/_react.default.createElement(_headerBackButton.default, null),
     centerColumn: props.centerColumn,
     buttons: buttons
-  }, kitData)));
+  }));
 }
 
 ItemHeader.propTypes = {
@@ -1334,8 +1227,6 @@ var _useKitCallToAction3 = _interopRequireWildcard(__webpack_require__(/*! ../ho
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./kit-list-item.scss */ "../core/app/modules/kit-library/assets/js/components/kit-list-item.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -1348,15 +1239,6 @@ var KitListItem = function KitListItem(props) {
       type = _useKitCallToAction2[0],
       subscriptionPlan = _useKitCallToAction2[1].subscriptionPlan;
 
-  var eventTracking = function eventTracking(command) {
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      kit_name: props.model.title,
-      grid_location: props.index,
-      search_term: props.queryParams,
-      page_source: props.source && '/' === props.source ? 'all kits' : 'favorites'
-    });
-  };
-
   return /*#__PURE__*/_react.default.createElement(_appUi.Card, {
     className: "e-kit-library__kit-item"
   }, /*#__PURE__*/_react.default.createElement(_appUi.CardHeader, null, /*#__PURE__*/_react.default.createElement(_appUi.Heading, {
@@ -1366,11 +1248,7 @@ var KitListItem = function KitListItem(props) {
     className: "eps-card__headline"
   }, props.model.title), /*#__PURE__*/_react.default.createElement(_favoritesActions.default, {
     id: props.model.id,
-    isFavorite: props.model.isFavorite,
-    index: props.index,
-    name: props.model.title,
-    queryParams: props.queryParams,
-    source: props.source
+    isFavorite: props.model.isFavorite
   })), /*#__PURE__*/_react.default.createElement(_appUi.CardBody, null, /*#__PURE__*/_react.default.createElement(_appUi.CardImage, {
     alt: props.model.title,
     src: props.model.thumbnailUrl || ''
@@ -1388,10 +1266,7 @@ var KitListItem = function KitListItem(props) {
     className: "e-kit-library__kit-item-overlay-overview-button",
     text: __('View Demo', 'elementor'),
     icon: "eicon-preview-medium",
-    url: "/kit-library/preview/".concat(props.model.id),
-    onClick: function onClick() {
-      return eventTracking('kit-library/check-out-kit');
-    }
+    url: "/kit-library/preview/".concat(props.model.id)
   }), type === _useKitCallToAction3.TYPE_PROMOTION && (subscriptionPlan === null || subscriptionPlan === void 0 ? void 0 : subscriptionPlan.label) && /*#__PURE__*/_react.default.createElement(_appUi.Button, {
     className: "e-kit-library__kit-item-overlay-promotion-button",
     text: "Go ".concat(subscriptionPlan.label),
@@ -1402,10 +1277,7 @@ var KitListItem = function KitListItem(props) {
 };
 
 KitListItem.propTypes = {
-  model: PropTypes.instanceOf(_kit.default).isRequired,
-  index: PropTypes.number,
-  queryParams: PropTypes.string,
-  source: PropTypes.string
+  model: PropTypes.instanceOf(_kit.default).isRequired
 };
 
 var _default = _react.default.memo(KitListItem);
@@ -1451,29 +1323,16 @@ function KitList(props) {
   return /*#__PURE__*/_react.default.createElement(_appUi.CssGrid, {
     spacing: 24,
     colMinWidth: 290
-  }, 'onboarding' === referrer && /*#__PURE__*/_react.default.createElement(_newPageKitListItem.default, null), props.data.map(function (model, index) {
-    var _props$queryParams;
-
-    return (
-      /*#__PURE__*/
-      // The + 1 was added in order to start the map.index from 1 and not from 0.
-      _react.default.createElement(_kitListItem.default, {
-        key: model.id,
-        model: model,
-        index: index + 1,
-        queryParams: (_props$queryParams = props.queryParams) === null || _props$queryParams === void 0 ? void 0 : _props$queryParams.search,
-        source: props.source
-      })
-    );
+  }, 'onboarding' === referrer && /*#__PURE__*/_react.default.createElement(_newPageKitListItem.default, null), props.data.map(function (model) {
+    return /*#__PURE__*/_react.default.createElement(_kitListItem.default, {
+      key: model.id,
+      model: model
+    });
   }));
 }
 
 KitList.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.instanceOf(_kit.default)),
-  queryParams: PropTypes.shape({
-    search: PropTypes.string
-  }),
-  source: PropTypes.string
+  data: PropTypes.arrayOf(PropTypes.instanceOf(_kit.default))
 };
 
 /***/ }),
@@ -1486,7 +1345,6 @@ KitList.propTypes = {
 
 "use strict";
 /* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
-/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
@@ -1504,23 +1362,12 @@ var _lastFilterContext = __webpack_require__(/*! ../../context/last-filter-conte
 
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./header-back-button.scss */ "../core/app/modules/kit-library/assets/js/components/layout/header-back-button.scss");
 
-function HeaderBackButton(props) {
+function HeaderBackButton() {
   var navigate = (0, _router.useNavigate)(),
       _useLastFilterContext = (0, _lastFilterContext.useLastFilterContext)(),
-      lastFilter = _useLastFilterContext.lastFilter,
-      eventTracking = function eventTracking(command) {
-    var eventType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: props.pageId,
-      kit_name: props.kitName,
-      element_position: 'app_header',
-      event_type: eventType
-    });
-  };
+      lastFilter = _useLastFilterContext.lastFilter;
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "e-kit-library__header-back-container"
@@ -1529,16 +1376,10 @@ function HeaderBackButton(props) {
     icon: "eicon-chevron-left",
     text: __('Back to Library', 'elementor'),
     onClick: function onClick() {
-      eventTracking('kit-library/back-to-library');
-      navigate(wp.url.addQueryArgs('/kit-library', lastFilter));
+      return navigate(wp.url.addQueryArgs('/kit-library', lastFilter));
     }
   }));
 }
-
-HeaderBackButton.propTypes = {
-  pageId: PropTypes.string.isRequired,
-  kitName: PropTypes.string.isRequired
-};
 
 /***/ }),
 
@@ -1566,25 +1407,7 @@ var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
 var _headerButtons = _interopRequireDefault(__webpack_require__(/*! ../../../../../../assets/js/layout/header-buttons */ "../core/app/assets/js/layout/header-buttons.js"));
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 function Header(props) {
-  var eventTracking = function eventTracking(command) {
-    var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'home page';
-    var kitName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var eventType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'click';
-    return (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: source,
-      element_position: 'app_header',
-      kit_name: kitName,
-      event_type: eventType
-    });
-  },
-      _onClose = function onClose() {
-    eventTracking('kit-library/close', props === null || props === void 0 ? void 0 : props.pageId, props === null || props === void 0 ? void 0 : props.kitName);
-    window.top.location = elementorAppConfig.admin_url;
-  };
-
   return /*#__PURE__*/_react.default.createElement(_appUi.Grid, {
     container: true,
     alignItems: "center",
@@ -1592,10 +1415,7 @@ function Header(props) {
     className: "eps-app__header"
   }, props.startColumn || /*#__PURE__*/_react.default.createElement("a", {
     className: "eps-app__logo-title-wrapper",
-    href: "#/kit-library",
-    onClick: function onClick() {
-      return eventTracking('kit-library/logo');
-    }
+    href: "#/kit-library"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "eps-app__logo eicon-elementor"
   }), /*#__PURE__*/_react.default.createElement("h1", {
@@ -1605,10 +1425,7 @@ function Header(props) {
       flex: 1
     }
   }, /*#__PURE__*/_react.default.createElement(_headerButtons.default, {
-    buttons: props.buttons,
-    onClose: function onClose() {
-      return _onClose();
-    }
+    buttons: props.buttons
   })));
 }
 
@@ -1616,9 +1433,7 @@ Header.propTypes = {
   startColumn: PropTypes.node,
   endColumn: PropTypes.node,
   centerColumn: PropTypes.node,
-  buttons: PropTypes.arrayOf(PropTypes.object),
-  kitName: PropTypes.string,
-  pageId: PropTypes.string
+  buttons: PropTypes.arrayOf(PropTypes.object)
 };
 
 /***/ }),
@@ -1821,40 +1636,22 @@ function SortSelect(props) {
     options: props.options,
     value: props.value.by,
     onChange: function onChange(e) {
-      var _props$onChangeSortVa;
-
       var value = e.target.value;
-      (_props$onChangeSortVa = props.onChangeSortValue) === null || _props$onChangeSortVa === void 0 ? void 0 : _props$onChangeSortVa.call(props, value);
       props.onChange({
         by: value,
         direction: props.value.direction
       });
     },
-    className: "eps-sort-select__select",
-    onClick: function onClick() {
-      var _props$onSortSelectOp;
-
-      props.onChange({
-        by: props.value.by,
-        direction: props.value.direction
-      });
-      (_props$onSortSelectOp = props.onSortSelectOpen) === null || _props$onSortSelectOp === void 0 ? void 0 : _props$onSortSelectOp.call(props);
-    }
+    className: "eps-sort-select__select"
   })), /*#__PURE__*/_react.default.createElement(_appUi.Button, {
     text: 'asc' === props.value.direction ? __('Sort Descending', 'elementor') : __('Sort Ascending', 'elementor'),
     hideText: true,
     icon: 'asc' === props.value.direction ? 'eicon-arrow-up' : 'eicon-arrow-down',
     className: "eps-sort-select__button",
     onClick: function onClick() {
-      var direction = direction && 'asc' === props.value.direction ? 'desc' : 'asc';
-
-      if (props.onChangeSortDirection) {
-        props.onChangeSortDirection(direction);
-      }
-
       props.onChange({
         by: props.value.by,
-        direction: direction
+        direction: 'asc' === props.value.direction ? 'desc' : 'asc'
       });
     }
   }));
@@ -1869,10 +1666,7 @@ SortSelect.propTypes = {
     direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
     by: PropTypes.string.isRequired
   }).isRequired,
-  onChange: PropTypes.func.isRequired,
-  onChangeSortValue: PropTypes.func,
-  onSortSelectOpen: PropTypes.func,
-  onChangeSortDirection: PropTypes.func
+  onChange: PropTypes.func.isRequired
 };
 
 /***/ }),
@@ -1913,8 +1707,6 @@ var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -1942,44 +1734,18 @@ var TaxonomiesFilterList = function TaxonomiesFilterList(props) {
       return tag.text.toLowerCase().includes(lowerCaseSearch);
     });
   }, [props.taxonomiesByType.data, search]);
-
-  var eventTracking = function eventTracking(command, section, action, item) {
-    var category = props.category && ('/favorites' === props.category ? 'favorites' : 'all kits');
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: 'home page',
-      element_location: 'app_sidebar',
-      category: category,
-      section: section,
-      item: item,
-      action: action ? 'checked' : 'unchecked'
-    });
-  };
-
   return /*#__PURE__*/_react.default.createElement(_collapse.default, {
     className: "e-kit-library__tags-filter-list",
     title: props.taxonomiesByType.label,
     isOpen: isOpen,
-    onChange: setIsOpen,
-    onClick: function onClick(collapseState, title) {
-      var _props$onCollapseChan;
-
-      (_props$onCollapseChan = props.onCollapseChange) === null || _props$onCollapseChan === void 0 ? void 0 : _props$onCollapseChan.call(props, collapseState, title);
-    }
+    onChange: setIsOpen
   }, props.taxonomiesByType.data.length >= MIN_TAGS_LENGTH_FOR_SEARCH_INPUT && /*#__PURE__*/_react.default.createElement(_searchInput.default, {
     size: "sm",
-    className: "e-kit-library__tags-filter-list-search" // Translators: %s is the taxonomy type.
+    className: "e-kit-library__tags-filter-list-search" // eslint-disable-next-line @wordpress/i18n-ellipsis
     ,
     placeholder: (0, _i18n.sprintf)(__('Search %s...', 'elementor'), props.taxonomiesByType.label),
     value: search,
-    onChange: function onChange(searchTerm) {
-      setSearch(searchTerm);
-
-      if (searchTerm) {
-        var _props$onChange;
-
-        (_props$onChange = props.onChange) === null || _props$onChange === void 0 ? void 0 : _props$onChange.call(props, searchTerm);
-      }
-    }
+    onChange: setSearch
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "e-kit-library__tags-filter-list-container"
   }, 0 === taxonomies.length && /*#__PURE__*/_react.default.createElement(_appUi.Text, null, __('No Results Found', 'elementor')), taxonomies.map(function (taxonomy) {
@@ -1995,7 +1761,6 @@ var TaxonomiesFilterList = function TaxonomiesFilterList(props) {
         checked: ((_props$selected$taxon = props.selected[taxonomy.type]) === null || _props$selected$taxon === void 0 ? void 0 : _props$selected$taxon.includes(taxonomy.text)) || false,
         onChange: function onChange(e) {
           var checked = e.target.checked;
-          eventTracking('kit-library/filter', taxonomy.type, checked, taxonomy.text);
           props.onSelect(taxonomy.type, function (prev) {
             return checked ? [].concat((0, _toConsumableArray2.default)(prev), [taxonomy.text]) : prev.filter(function (tagId) {
               return tagId !== taxonomy.text;
@@ -2015,10 +1780,7 @@ TaxonomiesFilterList.propTypes = {
     isOpenByDefault: PropTypes.bool
   }),
   selected: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)),
-  onSelect: PropTypes.func,
-  onCollapseChange: PropTypes.func,
-  category: PropTypes.string,
-  onChange: PropTypes.func
+  onSelect: PropTypes.func
 };
 
 var _default = _react.default.memo(TaxonomiesFilterList);
@@ -2054,8 +1816,6 @@ var _taxonomiesFilterList = _interopRequireDefault(__webpack_require__(/*! ./tax
 
 var _taxonomy = _interopRequireWildcard(__webpack_require__(/*! ../models/taxonomy */ "../core/app/modules/kit-library/assets/js/models/taxonomy.js"));
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./tags-filter.scss */ "../core/app/modules/kit-library/assets/js/components/tags-filter.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -2085,19 +1845,7 @@ function TaxonomiesFilter(props) {
       var data = _ref.data;
       return data.length > 0;
     });
-  }, [props.taxonomies]),
-      eventTracking = function eventTracking(command, search, section) {
-    var eventType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'click';
-    return (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: 'home page',
-      element_location: 'app_sidebar',
-      category: props.category && ('/favorites' === props.category ? 'favorites' : 'all kits'),
-      section: section,
-      search_term: search,
-      event_type: eventType
-    });
-  };
-
+  }, [props.taxonomies]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "e-kit-library__tags-filter"
   }, taxonomiesByType.map(function (group) {
@@ -2105,15 +1853,7 @@ function TaxonomiesFilter(props) {
       key: group.key,
       taxonomiesByType: group,
       selected: props.selected,
-      onSelect: props.onSelect,
-      onCollapseChange: function onCollapseChange(collapseState, title) {
-        var command = collapseState ? 'kit-library/collapse' : 'kit-library/expand';
-        eventTracking(command, null, title);
-      },
-      onChange: function onChange(search) {
-        eventTracking('kit-library/filter', search, group.label, 'search');
-      },
-      category: props.category
+      onSelect: props.onSelect
     });
   }));
 }
@@ -2121,8 +1861,7 @@ function TaxonomiesFilter(props) {
 TaxonomiesFilter.propTypes = {
   selected: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)),
   onSelect: PropTypes.func,
-  taxonomies: PropTypes.arrayOf(PropTypes.instanceOf(_taxonomy.default)),
-  category: PropTypes.string
+  taxonomies: PropTypes.arrayOf(PropTypes.instanceOf(_taxonomy.default))
 };
 
 /***/ }),
@@ -2443,7 +2182,7 @@ exports.TYPE_APPLY = TYPE_APPLY;
 
 function useKitCallToAction(kitAccessLevel) {
   var _useSettingsContext = (0, _settingsContext.useSettingsContext)(),
-      settings = _useSettingsContext.settings; // SubscriptionPlan can be null when the context is not filled (can be happened when using back button in the browser.)
+      settings = _useSettingsContext.settings; // subscriptionPlan can be null when the context is not filled (can be happened when using back button in the browser.)
 
 
   var subscriptionPlan = (0, _react.useMemo)(function () {
@@ -2768,7 +2507,7 @@ var kitsPipeFunctions = {
   },
 
   /**
-   * Filter by search term.
+   * filter by search term.
    *
    * @param {Array<*>} data
    * @param {*}        queryParams
@@ -3458,6 +3197,9 @@ var taxonomyType = [{
   key: 'tags',
   label: __('Tags', 'elementor')
 }, {
+  key: 'types',
+  label: __('Kit Types', 'elementor')
+}, {
   key: 'features',
   label: __('Features', 'elementor')
 }, {
@@ -3605,8 +3347,6 @@ var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/r
 
 var _popoverDialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/popover-dialog/popover-dialog */ "../core/app/assets/js/ui/popover-dialog/popover-dialog.js"));
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./index-header.scss */ "../core/app/modules/kit-library/assets/js/pages/index/index-header.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -3622,25 +3362,6 @@ function IndexHeader(props) {
       setIsInfoModalOpen = _useState2[1];
 
   var importRef = (0, _react.useRef)();
-
-  var eventTracking = function eventTracking(command) {
-    var element = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var eventType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'click';
-    var modalType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      element: element,
-      event_type: eventType,
-      page_source: 'home page',
-      element_position: 'app_header',
-      modal_type: modalType
-    });
-  };
-
-  var _onClose = function onClose(e) {
-    var element = e.target.classList.contains('eps-modal__overlay') ? 'overlay' : 'x';
-    eventTracking('kit-library/modal-close', element, null, 'info');
-  };
-
   var buttons = (0, _react.useMemo)(function () {
     return [{
       id: 'info',
@@ -3648,18 +3369,14 @@ function IndexHeader(props) {
       hideText: true,
       icon: 'eicon-info-circle-o',
       onClick: function onClick() {
-        eventTracking('kit-library/seek-more-info');
-        setIsInfoModalOpen(true);
+        return setIsInfoModalOpen(true);
       }
     }, {
       id: 'refetch',
       text: __('Refetch', 'elementor-pro'),
       hideText: true,
       icon: "eicon-sync ".concat(props.isFetching ? 'eicon-animation-spin' : ''),
-      onClick: function onClick() {
-        eventTracking('kit-library/refetch');
-        props.refetch();
-      }
+      onClick: props.refetch
     }, {
       id: 'import',
       text: __('Import', 'elementor-pro'),
@@ -3667,8 +3384,7 @@ function IndexHeader(props) {
       icon: 'eicon-upload-circle-o',
       elRef: importRef,
       onClick: function onClick() {
-        eventTracking('kit-library/kit-import');
-        navigate('/import?referrer=kit-library');
+        return navigate('/import?referrer=kit-library');
       }
     }];
   }, [props.isFetching, props.refetch]);
@@ -3680,13 +3396,7 @@ function IndexHeader(props) {
   }, __('Import Kit', 'elementor')), /*#__PURE__*/_react.default.createElement(_appUi.ModalProvider, {
     title: __('Welcome to the Library', 'elementor'),
     show: isInfoModalOpen,
-    setShow: setIsInfoModalOpen,
-    onOpen: function onOpen() {
-      return eventTracking('kit-library/modal-open', null, 'load', 'info');
-    },
-    onClose: function onClose(e) {
-      return _onClose(e);
-    }
+    setShow: setIsInfoModalOpen
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "e-kit-library-header-info-modal-container"
   }, /*#__PURE__*/_react.default.createElement(_appUi.Heading, {
@@ -3705,10 +3415,7 @@ function IndexHeader(props) {
     target: "_blank",
     rel: "noreferrer",
     text: __('Learn more', 'elementor'),
-    color: "link",
-    onClick: function onClick() {
-      eventTracking('kit-library/seek-more-info', 'text link', null, 'info');
-    }
+    color: "link"
   }), ' ', __('about using templates', 'elementor')))));
 }
 
@@ -3740,29 +3447,14 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 function IndexSidebar(props) {
-  var eventTracking = function eventTracking(command, category, source) {
-    var eventType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'click';
-    return (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      category: category,
-      source: source,
-      element_location: 'app_sidebar',
-      event_type: eventType
-    });
-  };
-
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, props.menuItems.map(function (item) {
     return /*#__PURE__*/_react.default.createElement(_appUi.MenuItem, {
       key: item.label,
       text: item.label,
       className: "eps-menu-item__link ".concat(item.isActive ? 'eps-menu-item--active' : ''),
       icon: item.icon,
-      url: item.url,
-      onClick: function onClick() {
-        return eventTracking(item.trackEventData.command, item.trackEventData.category, 'home page');
-      }
+      url: item.url
     });
   }), props.tagsFilterSlot);
 }
@@ -3843,8 +3535,6 @@ var _lastFilterContext = __webpack_require__(/*! ../../context/last-filter-conte
 
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./index.scss */ "../core/app/modules/kit-library/assets/js/pages/index/index.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -3905,20 +3595,12 @@ function useMenuItems(path) {
       label: __('All Template Kits', 'elementor'),
       icon: 'eicon-filter',
       isActive: !page,
-      url: '/kit-library',
-      trackEventData: {
-        command: 'kit-library/select-organizing-category',
-        category: 'all'
-      }
+      url: '/kit-library'
     }, {
       label: __('Favorites', 'elementor'),
       icon: 'eicon-heart-o',
       isActive: 'favorites' === page,
-      url: '/kit-library/favorites',
-      trackEventData: {
-        command: 'kit-library/select-organizing-category',
-        category: 'favorites'
-      }
+      url: '/kit-library/favorites'
     }];
   }, [path]);
 }
@@ -3999,30 +3681,12 @@ function Index(props) {
       selectTaxonomy = _useTaxonomiesSelecti2[0],
       unselectTaxonomy = _useTaxonomiesSelecti2[1];
 
-  var eventTracking = function eventTracking(command, elementPosition) {
-    var search = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var direction = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-    var sortType = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
-    var action = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
-    var eventType = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: 'home page',
-      element_position: elementPosition,
-      search_term: search,
-      sort_direction: direction,
-      sort_type: sortType,
-      event_type: eventType,
-      action: action
-    });
-  };
-
   return /*#__PURE__*/_react.default.createElement(_layout.default, {
     sidebar: /*#__PURE__*/_react.default.createElement(_indexSidebar.default, {
       tagsFilterSlot: /*#__PURE__*/_react.default.createElement(_taxonomiesFilter.default, {
         selected: queryParams.taxonomies,
         onSelect: selectTaxonomy,
-        taxonomies: taxonomiesData,
-        category: props.path
+        taxonomies: taxonomiesData
       }),
       menuItems: menuItems
     }),
@@ -4046,12 +3710,11 @@ function Index(props) {
     placeholder: __('Search all Template Kits...', 'elementor'),
     value: queryParams.search,
     onChange: function onChange(value) {
-      setQueryParams(function (prev) {
+      return setQueryParams(function (prev) {
         return _objectSpread(_objectSpread({}, prev), {}, {
           search: value
         });
       });
-      eventTracking('kit-library/kit-free-search', 'top_area_search', value, null, null, null, 'search');
     }
   }), isFilterActive && /*#__PURE__*/_react.default.createElement(_filterIndicationText.default, {
     queryParams: queryParams,
@@ -4082,15 +3745,6 @@ function Index(props) {
           order: order
         });
       });
-    },
-    onChangeSortDirection: function onChangeSortDirection(direction) {
-      return eventTracking('kit-library/change-sort-direction', 'top_area_sort', null, direction);
-    },
-    onChangeSortValue: function onChangeSortValue(value) {
-      return eventTracking('kit-library/change-sort-value', 'top_area_sort', null, null, value);
-    },
-    onSortSelectOpen: function onSortSelectOpen() {
-      return eventTracking('kit-library/change-sort-type', 'top_area_sort', null, null, null, 'expand');
     }
   }))), /*#__PURE__*/_react.default.createElement(_content.default, {
     className: "e-kit-library__index-layout-main"
@@ -4103,23 +3757,18 @@ function Index(props) {
       target: '_blank'
     }
   }), isSuccess && 0 < data.length && queryParams.ready && /*#__PURE__*/_react.default.createElement(_kitList.default, {
-    data: data,
-    queryParams: queryParams,
-    source: props.path
+    data: data
   }), isSuccess && 0 === data.length && queryParams.ready && props.renderNoResultsComponent({
     defaultComponent: /*#__PURE__*/_react.default.createElement(_errorScreen.default, {
       title: __('No results matched your search.', 'elementor'),
       description: __('Try different keywords or ', 'elementor'),
       button: {
         text: __('Continue browsing.', 'elementor'),
-        action: clearQueryParams,
-        category: props.path
+        action: clearQueryParams
       }
     }),
     isFilterActive: isFilterActive
-  }), /*#__PURE__*/_react.default.createElement(_envatoPromotion.default, {
-    category: props.path
-  })))));
+  }), /*#__PURE__*/_react.default.createElement(_envatoPromotion.default, null)))));
 }
 
 Index.propTypes = {
@@ -4161,21 +3810,7 @@ var _document = _interopRequireDefault(__webpack_require__(/*! ../../models/docu
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 function OverviewContentGroupItem(props) {
-  var eventTracking = function eventTracking(command) {
-    var eventType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      kit_name: props.kitTitle,
-      document_type: props.groupData.id,
-      document_name: "".concat(props.groupData.label, "-").concat(props.document.title),
-      page_source: 'overview',
-      element_position: 'content_overview',
-      event_type: eventType
-    });
-  };
-
   return /*#__PURE__*/_react.default.createElement(_appUi.Card, null, /*#__PURE__*/_react.default.createElement(_appUi.CardHeader, null, /*#__PURE__*/_react.default.createElement(_appUi.Heading, {
     tag: "h3",
     title: props.document.title,
@@ -4188,21 +3823,13 @@ function OverviewContentGroupItem(props) {
     className: "e-kit-library__kit-item-overlay-overview-button",
     text: __('View Demo', 'elementor'),
     icon: "eicon-preview-medium",
-    url: "/kit-library/preview/".concat(props.kitId, "?document_id=").concat(props.document.id),
-    onClick: function onClick() {
-      return eventTracking('kit-library/view-demo-part');
-    }
+    url: "/kit-library/preview/".concat(props.kitId, "?document_id=").concat(props.document.id)
   })))));
 }
 
 OverviewContentGroupItem.propTypes = {
   document: PropTypes.instanceOf(_document.default).isRequired,
-  kitId: PropTypes.string.isRequired,
-  kitTitle: PropTypes.string.isRequired,
-  groupData: PropTypes.shape({
-    label: PropTypes.string,
-    id: PropTypes.string
-  }).isRequired
+  kitId: PropTypes.string.isRequired
 };
 
 /***/ }),
@@ -4252,17 +3879,14 @@ function OverviewContentGroup(props) {
     return /*#__PURE__*/_react.default.createElement(_overviewContentGroupItem.default, {
       key: document.id,
       document: document,
-      kitId: props.kitId,
-      kitTitle: props.kitTitle,
-      groupData: props.contentType
+      kitId: props.kitId
     });
   })));
 }
 
 OverviewContentGroup.propTypes = {
   contentType: PropTypes.instanceOf(_contentType.default),
-  kitId: PropTypes.string.isRequired,
-  kitTitle: PropTypes.string.isRequired
+  kitId: PropTypes.string.isRequired
 };
 
 /***/ }),
@@ -4303,8 +3927,6 @@ var _overviewTaxonomyBadge = _interopRequireDefault(__webpack_require__(/*! ./ov
 
 var _appUi = __webpack_require__(/*! @elementor/app-ui */ "@elementor/app-ui");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./overview-sidebar.scss */ "../core/app/modules/kit-library/assets/js/pages/overview/overview-sidebar.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -4323,28 +3945,6 @@ function OverviewSidebar(props) {
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
       isInformationCollapseOpen = _useState4[0],
       setIsInformationCollapseOpen = _useState4[1];
-
-  var eventTracking = function eventTracking(command) {
-    var section = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var kitName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var tag = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-    var isCollapsed = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
-    var eventType = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'click';
-    var action = isCollapsed && isCollapsed ? 'collapse' : 'expand';
-
-    if ('boolean' === typeof isCollapsed) {
-      command = "kit-library/".concat(action);
-    }
-
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      page_source: 'overview',
-      element_location: 'app_sidebar',
-      kit_name: kitName,
-      tag: tag,
-      section: section,
-      event_type: eventType
-    });
-  };
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "e-kit-library__item-sidebar"
@@ -4367,28 +3967,19 @@ function OverviewSidebar(props) {
     isOpen: isTagsCollapseOpen,
     onChange: setIsTagsCollapseOpen,
     title: __('TAGS', 'elementor'),
-    className: "e-kit-library__item-sidebar-collapse-tags",
-    onClick: function onClick(collapseState, title) {
-      eventTracking(null, title, null, null, collapseState);
-    }
+    className: "e-kit-library__item-sidebar-collapse-tags"
   }, /*#__PURE__*/_react.default.createElement(_appUi.Grid, {
     container: true,
     className: "e-kit-library__item-sidebar-tags-container"
   }, props.model.taxonomies.map(function (taxonomy) {
     return /*#__PURE__*/_react.default.createElement(_overviewTaxonomyBadge.default, {
-      key: taxonomy,
-      onClick: function onClick(taxonomyText) {
-        eventTracking('kit-library/filter', null, props.model.title, taxonomyText);
-      }
+      key: taxonomy
     }, taxonomy);
   }))), ((_props$groupedKitCont = props.groupedKitContent) === null || _props$groupedKitCont === void 0 ? void 0 : _props$groupedKitCont.length) > 0 && props.model.documents.length > 0 && /*#__PURE__*/_react.default.createElement(_collapse.default, {
     isOpen: isInformationCollapseOpen,
     onChange: setIsInformationCollapseOpen,
     title: __('WHAT\'S INSIDE', 'elementor'),
-    className: "e-kit-library__item-sidebar-collapse-info",
-    onClick: function onClick(collapseState, title) {
-      eventTracking(null, title, null, null, collapseState);
-    }
+    className: "e-kit-library__item-sidebar-collapse-info"
   }, props.groupedKitContent.map(function (contentType) {
     if (contentType.documents <= 0) {
       return '';
@@ -4403,7 +3994,6 @@ function OverviewSidebar(props) {
 
 OverviewSidebar.propTypes = {
   model: PropTypes.instanceOf(_kit.default).isRequired,
-  index: PropTypes.number,
   groupedKitContent: PropTypes.arrayOf(PropTypes.instanceOf(_contentType.default))
 };
 
@@ -4462,16 +4052,12 @@ function OverviewTaxonomyBadge(props) {
   }
 
   return /*#__PURE__*/_react.default.createElement(_router.Link, {
-    onClick: function onClick() {
-      props === null || props === void 0 ? void 0 : props.onClick(taxonomyText);
-    },
     to: "/kit-library?taxonomies[".concat(type, "][]=").concat(taxonomyText)
   }, /*#__PURE__*/_react.default.createElement(_badge.default, null, props.children));
 }
 
 OverviewTaxonomyBadge.propTypes = {
-  children: PropTypes.string,
-  onClick: PropTypes.func
+  children: PropTypes.string
 };
 
 /***/ }),
@@ -4518,15 +4104,13 @@ var _usePageTitle = _interopRequireDefault(__webpack_require__(/*! elementor-app
 
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./overview.scss */ "../core/app/modules/kit-library/assets/js/pages/overview/overview.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function useHeaderButtons(id, kitName) {
+function useHeaderButtons(id) {
   var navigate = (0, _router.useNavigate)();
   return (0, _react.useMemo)(function () {
     return [{
@@ -4537,13 +4121,7 @@ function useHeaderButtons(id, kitName) {
       color: 'secondary',
       size: 'sm',
       onClick: function onClick() {
-        (0, _appsEventTracking.appsEventTrackingDispatch)('kit-library/view-demo-page', {
-          kit_name: kitName,
-          page_source: 'overview',
-          element_position: 'app_header',
-          view_type_clicked: 'demo'
-        });
-        navigate("/kit-library/preview/".concat(id));
+        return navigate("/kit-library/preview/".concat(id));
       },
       includeHeaderBtnClass: false
     }];
@@ -4559,7 +4137,7 @@ function Overview(props) {
   var _useKitDocumentByType = (0, _useKitDocumentByType2.default)(kit),
       documentsByType = _useKitDocumentByType.data;
 
-  var headerButtons = useHeaderButtons(props.id, kit && kit.title);
+  var headerButtons = useHeaderButtons(props.id);
   (0, _usePageTitle.default)({
     title: kit ? "".concat(__('Kit Library', 'elementor'), " | ").concat(kit.title) // eslint-disable-next-line @wordpress/i18n-ellipsis
     : __('Loading...', 'elementor')
@@ -4588,8 +4166,7 @@ function Overview(props) {
     return /*#__PURE__*/_react.default.createElement(_overviewContentGroup.default, {
       key: contentType.id,
       contentType: contentType,
-      kitId: props.id,
-      kitTitle: kit.title
+      kitId: props.id
     });
   })));
 }
@@ -4775,8 +4352,6 @@ var _previewIframe = __webpack_require__(/*! ./preview-iframe */ "../core/app/mo
 
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 
-var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../core/app/assets/js/event-track/apps-event-tracking.js");
-
 __webpack_require__(/*! ./preview.scss */ "../core/app/modules/kit-library/assets/js/pages/preview/preview.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -4811,20 +4386,8 @@ var breakpoints = [{
 }];
 exports.breakpoints = breakpoints;
 
-function useHeaderButtons(id, kitName) {
+function useHeaderButtons(id) {
   var navigate = (0, _router.useNavigate)();
-
-  var eventTracking = function eventTracking(command, viewTypeClicked) {
-    var eventType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      kit_name: kitName,
-      element_position: 'app_header',
-      page_source: 'view demo',
-      view_type_clicked: viewTypeClicked,
-      event_type: eventType
-    });
-  };
-
   return (0, _react.useMemo)(function () {
     return [{
       id: 'overview',
@@ -4834,8 +4397,7 @@ function useHeaderButtons(id, kitName) {
       color: 'secondary',
       size: 'sm',
       onClick: function onClick() {
-        eventTracking('kit-library/view-overview-page', 'overview');
-        navigate("/kit-library/overview/".concat(id));
+        return navigate("/kit-library/overview/".concat(id));
       },
       includeHeaderBtnClass: false
     }];
@@ -4858,18 +4420,15 @@ function usePreviewUrl(data) {
       return null;
     }
 
-    var documentId = new URLSearchParams((_location$pathname$sp = location.pathname.split('?')) === null || _location$pathname$sp === void 0 ? void 0 : _location$pathname$sp[1]).get('document_id'),
-        utm = '?utm_source=kit-library&utm_medium=wp-dash&utm_campaign=preview',
-        previewUrl = data.previewUrl ? data.previewUrl + utm : data.previewUrl;
+    var documentId = new URLSearchParams((_location$pathname$sp = location.pathname.split('?')) === null || _location$pathname$sp === void 0 ? void 0 : _location$pathname$sp[1]).get('document_id');
 
     if (!documentId) {
-      return previewUrl;
+      return data.previewUrl;
     }
 
-    var documentPreviewUrl = ((_data$documents$find = data.documents.find(function (item) {
+    return ((_data$documents$find = data.documents.find(function (item) {
       return item.id === parseInt(documentId);
-    })) === null || _data$documents$find === void 0 ? void 0 : _data$documents$find.previewUrl) || previewUrl;
-    return documentPreviewUrl ? documentPreviewUrl + utm : documentPreviewUrl;
+    })) === null || _data$documents$find === void 0 ? void 0 : _data$documents$find.previewUrl) || data.previewUrl;
   }, [location, data]);
 }
 
@@ -4884,7 +4443,7 @@ function Preview(props) {
       isIframeLoading = _useState2[0],
       setIsIframeLoading = _useState2[1];
 
-  var headersButtons = useHeaderButtons(props.id, data && data.title);
+  var headersButtons = useHeaderButtons(props.id);
   var previewUrl = usePreviewUrl(data);
 
   var _useState3 = (0, _react.useState)('desktop'),
@@ -4898,24 +4457,6 @@ function Preview(props) {
       return value === activeDevice;
     }).style;
   }, [activeDevice]);
-
-  var eventTracking = function eventTracking(command, layout) {
-    var elementPosition = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var eventType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'click';
-    (0, _appsEventTracking.appsEventTrackingDispatch)(command, {
-      kit_name: data.title,
-      page_source: 'view demo',
-      layout: layout,
-      element_position: elementPosition,
-      event_type: eventType
-    });
-  };
-
-  var _onChange = function onChange(device) {
-    setActiveDevice(device);
-    eventTracking('kit-library/responsive-controls', device, 'app_header');
-  };
-
   (0, _usePageTitle.default)({
     title: data ? "".concat(__('Kit Library', 'elementor'), " | ").concat(data.title) // eslint-disable-next-line @wordpress/i18n-ellipsis
     : __('Loading...', 'elementor')
@@ -4936,10 +4477,7 @@ function Preview(props) {
       buttons: headersButtons,
       centerColumn: /*#__PURE__*/_react.default.createElement(_previewResponsiveControls.default, {
         active: activeDevice,
-        onChange: function onChange(device) {
-          return _onChange(device);
-        },
-        kitName: data.title
+        onChange: setActiveDevice
       }),
       pageId: "demo"
     })
@@ -5013,4 +4551,4 @@ exports["default"] = _default;
 /***/ })
 
 }]);
-//# sourceMappingURL=kit-library.6541ecdc008644261c67.bundle.js.map
+//# sourceMappingURL=kit-library.10fbb6c1e87e1129cb36.bundle.js.map

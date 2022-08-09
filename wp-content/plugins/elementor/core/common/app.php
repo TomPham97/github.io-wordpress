@@ -7,7 +7,6 @@ use Elementor\Core\Common\Modules\Finder\Module as Finder;
 use Elementor\Core\Common\Modules\Connect\Module as Connect;
 use Elementor\Core\Common\Modules\EventTracker\Module as Event_Tracker;
 use Elementor\Core\Files\Uploads_Manager;
-use Elementor\Icons_Manager;
 use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -142,7 +141,6 @@ class App extends BaseApp {
 				'elementor-web-cli',
 				'elementor-dialog',
 				'wp-api-request',
-				'elementor-dev-tools',
 			],
 			ELEMENTOR_VERSION,
 			true
@@ -169,7 +167,7 @@ class App extends BaseApp {
 			'elementor-icons',
 			$this->get_css_assets_url( 'elementor-icons', 'assets/lib/eicons/css/' ),
 			[],
-			Icons_Manager::ELEMENTOR_ICONS_VERSION
+			'5.15.0'
 		);
 
 		wp_enqueue_style(

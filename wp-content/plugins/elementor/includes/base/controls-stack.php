@@ -408,14 +408,12 @@ abstract class Controls_Stack extends Base_Object {
 
 		unset( $options['position'] );
 
-		if ( $this->current_popover ) {
-			$args['popover'] = [];
+		if ( $this->current_popover && ! $this->current_popover['initialized'] ) {
+			$args['popover'] = [
+				'start' => true,
+			];
 
-			if ( ! $this->current_popover['initialized'] ) {
-				$args['popover']['start'] = true;
-
-				$this->current_popover['initialized'] = true;
-			}
+			$this->current_popover['initialized'] = true;
 		}
 
 		return Plugin::$instance->controls_manager->add_control_to_stack( $this, $id, $args, $options );
